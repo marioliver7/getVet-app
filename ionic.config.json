@@ -1,0 +1,7 @@
+{
+  "name": "getVet",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

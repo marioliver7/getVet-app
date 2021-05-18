@@ -1,0 +1,12 @@
+.container {
+    --background: rgb(0, 0, 0) url("../../assets/image/background.jpg") no-repeat center center / cover;
+    filter: opacity(0.7);
+}
+
+#centralizar {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 5%;
+    margin: 0px 20px;
+}

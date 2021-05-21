@@ -1,0 +1,67 @@
+ion-content {
+    --background: rgb(1, 174, 188) url("../../assets/image/login6.jpg") no-repeat center center / cover;
+}
+
+#centralizar {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 5%;
+    margin: 0px 15px;
+}
+
+.section {
+    display: flex;
+    justify-content: center;
+
+    img {
+        height: 240px;
+        width: 240px;
+        
+        border-radius: 50%;
+    }
+}
+
+.section2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+ion-input {
+    width: 85%;
+    margin-top: 25px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.459);
+
+    text-align: start;
+}
+
+p {
+    text-align: end;
+    margin-right: 26px;
+
+    a {
+        color: rgba(255, 255, 255, 0.589);
+    }
+}
+
+// ion-card {
+//     background-color: white;
+
+//     border-radius: 15px;
+//     border-color: transparent;
+// }
+
+ion-row {
+    margin-top: 20px;
+
+    ion-col {
+        text-align: center;
+
+        span {
+            color: transparent;
+        }
+    }
+}

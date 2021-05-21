@@ -1,18 +1,35 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
+<ion-content [fullscreen]="true">
 
-    <ion-title>Cadastro</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true" padding class="container">
-  <ion-buttons slot="start">
-    <ion-back-button></ion-back-button>
-  </ion-buttons>
   <div id="centralizar">
+    <div class="section">
+      <img src="../../assets/image/logo_transparente2.png" alt="Logo">
+    </div>
+
+    <form class="ion-text-center">
+
+        <div class="section2">
+          <ion-input type="text" placeholder="Nome completo"><ion-icon name="person-outline"></ion-icon></ion-input>
+
+          <ion-input type="email" placeholder="Email"><ion-icon name="mail-outline"></ion-icon></ion-input>
     
+          <ion-input type="password" placeholder="Senha"><ion-icon name="lock-closed-outline"></ion-icon></ion-input>
+
+          <ion-input type="password" placeholder="Repetir senha"><ion-icon name="lock-closed-outline"></ion-icon></ion-input>
+
+        </div>
+  
+        <ion-row>
+  
+          <ion-col>
+            <ion-button class="font-Bold" expand="round" fill="outline" color="favorite">Começar</ion-button>
+          </ion-col>
+  
+          <ion-col>
+            <ion-button class="font-Bold" expand="round" color="favorite"><span>...</span> Login <span>...</span></ion-button>
+          </ion-col>
+        </ion-row>    
+
+    </form>
   </div>
+
 </ion-content>

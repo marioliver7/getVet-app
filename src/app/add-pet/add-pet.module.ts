@@ -4,20 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PetPageRoutingModule } from './pet-routing.module';
+import { AddPetPageRoutingModule } from './add-pet-routing.module';
 
-import { PetPage } from './pet.page';
-
-import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { AddPetPage } from './add-pet.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PetPageRoutingModule
+    AddPetPageRoutingModule
   ],
-  declarations: [PetPage],
-  providers: [Geolocation],
+  declarations: [AddPetPage]
 })
-export class PetPageModule {}
+export class AddPetPageModule {}

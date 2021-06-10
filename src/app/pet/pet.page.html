@@ -1,7 +1,51 @@
 <ion-content [fullscreen]="true">
-  <ion-slides>
+  <!-- <ion-slides> -->
 
-    <ion-slide class="slide1">
+    <!-- <ion-slide> -->
+      <div #map id="map"></div>
+
+      <ion-footer>
+
+        <ion-row>
+
+          <div class="options" (click)="carregarTela('perfil')">
+            <ion-avatar>
+              <ion-icon name="person"></ion-icon>
+            </ion-avatar>
+    
+            <p>Perfil</p>
+          </div>
+    
+          <div class="options" (click)="carregarTela('pets')">
+            <ion-avatar>
+              <ion-icon name="paw"></ion-icon>
+            </ion-avatar>
+    
+            <p>Pets</p>
+          </div>
+    
+          <div class="options" (click)="carregarTela('favorito')">
+            <ion-avatar>
+              <ion-icon name="star"></ion-icon>
+            </ion-avatar>
+    
+            <p>Favoritos</p>
+          </div>
+    
+          <div class="options" (click)="carregarTela('opcoes')">
+            <ion-avatar>
+              <ion-icon name="settings"></ion-icon>
+            </ion-avatar>
+    
+            <p>Opcões</p>
+          </div>
+    
+        </ion-row>
+
+      </ion-footer>
+    <!-- </ion-slide> -->
+
+    <!-- <ion-slide class="slide1">
 
       <div class="container">
         <img src="../../assets/image/sosLogo.jpeg" />
@@ -12,7 +56,7 @@
 
         <ion-row>
 
-          <div class="options">
+          <div class="options" (click)="carregarTela('perfil')">
             <ion-avatar>
               <ion-icon name="person"></ion-icon>
             </ion-avatar>
@@ -20,7 +64,7 @@
             <p>Perfil</p>
           </div>
     
-          <div class="options">
+          <div class="options" (click)="carregarTela('pets')">
             <ion-avatar>
               <ion-icon name="paw"></ion-icon>
             </ion-avatar>
@@ -28,7 +72,7 @@
             <p>Pets</p>
           </div>
     
-          <div class="options">
+          <div class="options" (click)="carregarTela('favorito')">
             <ion-avatar>
               <ion-icon name="star"></ion-icon>
             </ion-avatar>
@@ -36,7 +80,7 @@
             <p>Favoritos</p>
           </div>
     
-          <div class="options">
+          <div class="options" (click)="carregarTela('opcoes')">
             <ion-avatar>
               <ion-icon name="settings"></ion-icon>
             </ion-avatar>
@@ -48,11 +92,7 @@
 
       </ion-footer>
 
-    </ion-slide>
+    </ion-slide> -->
 
-    <ion-slide>
-      <div id="map">teste</div>
-    </ion-slide>
-
-  </ion-slides>
+  <!-- </ion-slides> -->
 </ion-content>

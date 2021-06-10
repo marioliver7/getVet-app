@@ -23,6 +23,26 @@ const routes: Routes = [
     path: 'pet',
     loadChildren: () => import('./pet/pet.module').then( m => m.PetPageModule)
   },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'favorito',
+    loadChildren: () => import('./favorito/favorito.module').then( m => m.FavoritoPageModule)
+  },
+  {
+    path: 'pets',
+    loadChildren: () => import('./pets/pets.module').then( m => m.PetsPageModule)
+  },
+  {
+    path: 'opcoes',
+    loadChildren: () => import('./opcoes/opcoes.module').then( m => m.OpcoesPageModule)
+  },
+  {
+    path: 'add-pet',
+    loadChildren: () => import('./add-pet/add-pet.module').then( m => m.AddPetPageModule)
+  },
 ];
 
 @NgModule({

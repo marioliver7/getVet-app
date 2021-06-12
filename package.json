@@ -6,10 +6,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "config": "node set-env.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "serve": "npm run config && ionic serve"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +26,7 @@
     "@ionic-native/google-maps": "^5.5.0",
     "@ionic/angular": "^5.5.2",
     "cordova-plugin-geolocation": "^4.1.0",
+    "dotenv": "^10.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

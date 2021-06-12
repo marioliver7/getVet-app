@@ -43,6 +43,10 @@ const routes: Routes = [
     path: 'add-pet',
     loadChildren: () => import('./add-pet/add-pet.module').then( m => m.AddPetPageModule)
   },
+  {
+    path: 'sos-page',
+    loadChildren: () => import('./sos-page/sos-page.module').then( m => m.SosPagePageModule)
+  },
 ];
 
 @NgModule({

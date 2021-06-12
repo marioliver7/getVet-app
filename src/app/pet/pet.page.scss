@@ -6,8 +6,13 @@ ion-content {
      height: 100vh;
 
      #map {
-       height: 85%;
+       height: 92%;
        width: 100%;
+       z-index: 2;
+
+       ion-searchbar {
+         --background: #fff;
+       }
      }
   //  } 
     
@@ -70,7 +75,21 @@ ion-content {
 
         }}
   // }
+
+  ion-tab-bar {
+    border: none;
   }
+
+  ion-fab-button {
+    img {
+      border: 2px solid white;
+      opacity: 7;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+}
   
   
   

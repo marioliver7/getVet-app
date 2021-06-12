@@ -1,10 +1,20 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Menu</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
 <ion-content [fullscreen]="true">
-  <!-- <ion-slides> -->
-
     <!-- <ion-slide> -->
-      <div #map id="map"></div>
+      <!-- <ion-fab slot="fixed" vertical="top" horizontal="start" (click)="carregarTela('menu')">
+        <ion-fab-button color="favorite"><ion-icon name="menu-outline"></ion-icon></ion-fab-button>
+      </ion-fab> -->
+      
+      <div #map id="map">
+        <ion-searchbar placeholder="Filter Schedules" animated></ion-searchbar>
+      </div>
 
-      <ion-footer>
+      <!-- <ion-footer>
 
         <ion-row>
 
@@ -42,7 +52,8 @@
     
         </ion-row>
 
-      </ion-footer>
+      </ion-footer> -->
+
     <!-- </ion-slide> -->
 
     <!-- <ion-slide class="slide1">
@@ -95,4 +106,38 @@
     </ion-slide> -->
 
   <!-- </ion-slides> -->
+  
+  <ion-tabs>
+    <ion-tab-bar color="favorite2" slot="bottom" lines="none">
+      <ion-tab-button tab="perfil" (click)="carregarTela('perfil')">
+        <ion-icon name="person-circle"></ion-icon>
+        <ion-label>Perfil</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="pet" (click)="carregarTela('pets')">
+        <ion-icon name="paw"></ion-icon>
+        <ion-label>Pet</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="sos">
+        <ion-icon class="sos" name="bag-add-outline"></ion-icon>
+        <ion-label>SOS</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="salvos" (click)="carregarTela('favorito')">
+        <ion-icon name="star"></ion-icon>
+        <ion-label>Salvos</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="about" (click)="carregarTela('opcoes')">
+        <ion-icon name="settings"></ion-icon>
+        <ion-label>Opções</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="center" (click)="carregarTela('sos-page')">
+    <ion-fab-button color="favorite"><img src="../../assets/image/sos.png"></ion-fab-button>
+  </ion-fab>
+  
 </ion-content>

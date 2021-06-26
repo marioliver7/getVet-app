@@ -1,9 +1,31 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>favorito</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Favoritos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <div class="container">
+
+    <ion-item color="transparent" lines="none" *ngFor="let vet of vets">
+      <ion-row>
+        <ion-col size="11">
+          <ion-avatar><img src="../../assets/image/teste.jpg"></ion-avatar>
+        </ion-col>
+
+        <ion-row>
+          <ion-col>
+            <p>{{ vet.name }}</p>
+            <p>{{ vet.address }}</p>
+          </ion-col>
+        </ion-row>
+      </ion-row>
+    </ion-item>
+
+  </div>
 
 </ion-content>

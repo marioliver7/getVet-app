@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
-
+import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -8,6 +8,7 @@ describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {
 
     TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule ],
       declarations: [AppComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();

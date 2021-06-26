@@ -47,6 +47,18 @@ const routes: Routes = [
     path: 'sos-page',
     loadChildren: () => import('./sos-page/sos-page.module').then( m => m.SosPagePageModule)
   },
+  {
+    path: 'veterinarios',
+    loadChildren: () => import('./veterinarios/veterinarios.module').then( m => m.VeterinariosPageModule)
+  },
+  {
+    path: 'sobre',
+    loadChildren: () => import('./sobre/sobre.module').then( m => m.SobrePageModule)
+  },
+  {
+    path: 'politica',
+    loadChildren: () => import('./politica/politica.module').then( m => m.PoliticaPageModule)
+  },
 ];
 
 @NgModule({

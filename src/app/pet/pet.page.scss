@@ -1,25 +1,22 @@
 ion-content {
     --ion-background-color: #01aebc;
-    // --background: linear-gradient(rgba(1,174,188, 1) 0%, rgba(1,174,188,1) 13.5%, rgba(1,174,188,1) 33.33%, rgba(255,255,255) 100%) !important;
    
-  //  ion-slides {
      height: 100vh;
 
-     #map {
+     ion-searchbar {
+      --background: #fff;
+
+      position: absolute;
+      top: 0;
+
+      z-index: 3;
+    }
+    
+    #map {
+       z-index: 2;
        height: 92%;
        width: 100%;
-       z-index: 2;
-
-       ion-searchbar {
-         --background: #fff;
-       }
      }
-  //  } 
-    
-  // .slide1 {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   flex-direction: column;
 
     .container {
       margin-top: 65px;
@@ -74,7 +71,6 @@ ion-content {
 
 
         }}
-  // }
 
   ion-tab-bar {
     border: none;

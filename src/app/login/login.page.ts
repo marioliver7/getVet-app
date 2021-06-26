@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { AlertController, NavController } from '@ionic/angular';
+import { Data } from 'src/config/data';
+import { HttpService } from 'src/services/http';
 
 @Component({
   selector: 'app-login',
@@ -7,38 +10,45 @@ import { AlertController, NavController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  loginForm: FormGroup;
 
-  constructor(public navCtrl: NavController, public alertController: AlertController) { }
+  constructor(public navCtrl: NavController, public alertController: AlertController, public http: HttpService,
+    public formBuilder: FormBuilder) { }
 
   ngOnInit() {
-  }
-
-  carregarTela(tela) {
-    this.navCtrl.navigateForward(tela);
-  }
-
-  async alertInicial(msn) {
-    const alert = await this.alertController.create({
-      header: 'GetVet',
-      message: 'Deseja realmente sair dessa tela?',
-      buttons: [
-        {
-          text: 'Não',
-          cssClass: 'secondary',
-          handler: () => {
-          }
-        }, 
-        {
-          text: 'Sim',
-          role: 'não',
-          handler: () => {
-            this.navCtrl.navigateForward("/home");
-          }
-        }
-      ]
+    this.loginForm = this.formBuilder.group({
+      email: [''],
+      password: ['']
     });
+  }
 
-    await alert.present();
+  login() {
+    this.http.login(this.loginForm.get('email').value, this.loginForm.get('password').value)
+      .subscribe(response => {
+        Data.saveToken();
+        Data.saveUser({
+          name: response.name,
+          email: response.email
+        });
+
+        this.navCtrl.navigateRoot('pet');
+      }, async err => {
+        const alert = await this.alertController.create({
+          header: 'GetVet',
+          message: 'Email e/ou Senha Inválidos',
+          buttons: [
+            {
+              text: 'OK'
+            }
+          ]
+        });
+
+        return await alert.present();
+      });
+  }
+
+  back() {
+    return this.navCtrl.navigateForward("/home");
   }
 
 }

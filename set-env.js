@@ -6,6 +6,7 @@ require('dotenv').config();
 const environmentFile = `export const environment = {
   googleMapsApiKey: "${process.env.GOOGLE_MAPS_API_KEY}",
   production: ${process.env.GOOGLE_MAPS_API_KEY == 'production'},
+  endpoint: "${process.env.ENDPOINT_API}",
 };
 `;
 

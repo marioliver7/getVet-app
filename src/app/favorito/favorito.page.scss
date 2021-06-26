@@ -1,0 +1,50 @@
+ion-content {
+    --ion-background-color: #01aebc;
+}
+
+ion-toolbar {
+    --background: #02818a;
+    --border-color: transparent;
+}
+
+h1 {
+    width: 160px;
+    text-align: center;
+    
+    border-radius: 5px;
+    border: 1px solid white;
+    
+    margin: 20px auto;
+}
+
+.container {
+    height: 100%;
+    padding: 25px;
+}
+
+ion-item {
+    background-color: rgba(255, 255, 255, 0.397);
+    border-radius: 25px;
+    border: 1px solid white;
+
+    margin-top: 25px;
+
+    // height: 200px;
+}
+
+ion-icon {
+    font-size: 17.5px;
+}
+
+ion-row {
+    width: 100%;
+    padding: 4px 0;
+}
+
+p {
+    font-size: 14px;
+}
+
+.arrow {
+    margin-top: 10px;
+}

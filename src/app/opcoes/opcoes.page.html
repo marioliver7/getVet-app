@@ -1,9 +1,32 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>opcoes</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Configurações</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+    <ion-item color="dark" button (click)="teste()">
+      <ion-icon name="invert-mode-outline"></ion-icon>
+      <ion-label>Modo noturno</ion-label>
+    </ion-item>
+
+    <ion-item color="dark" button (click)="carregarTela('sobre')">
+      <ion-icon name="information-circle-outline"></ion-icon>
+      <ion-label>Sobre o aplicativo</ion-label>
+    </ion-item>
+
+    <ion-item color="dark" button (click)="carregarTela('politica')">
+      <ion-icon name="document-lock-outline"></ion-icon>
+      <ion-label>Política de privacidade</ion-label>
+    </ion-item>
+
+    <ion-item color="dark" button (click)="logout()">
+      <ion-icon name="log-out-outline"></ion-icon>
+      <ion-label>Sair</ion-label>
+    </ion-item>
 
 </ion-content>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { Data } from 'src/config/data';
 
 @Component({
   selector: 'app-opcoes',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OpcoesPage implements OnInit {
 
-  constructor() { }
+  constructor(public navCtrl: NavController) { }
 
   ngOnInit() {
+  }
+
+  carregarTela(tela) {
+    this.navCtrl.navigateForward(tela);
+  }
+
+  logout() {
+    Data.removeToken();
+    this.navCtrl.navigateRoot('home');
   }
 
 }

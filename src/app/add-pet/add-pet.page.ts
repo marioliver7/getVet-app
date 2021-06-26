@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalController, NavController } from '@ionic/angular';
 
 @Component({
@@ -8,42 +8,22 @@ import { ModalController, NavController } from '@ionic/angular';
   styleUrls: ['./add-pet.page.scss'],
 })
 export class AddPetPage implements OnInit {
-  @Input() nome: string;
-  @Input() tipo: any;
+  petForm: FormGroup;
 
-  constructor(private modalController: ModalController, public navCtrl: NavController) { }
+  constructor(private modalController: ModalController, public navCtrl: NavController, public formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.petForm = this.formBuilder.group({
+      name: [''],
+      animal: ['']
+    });
   }
 
   dismiss() {
-    const tipo = document.querySelector('ion-radio-group').value;
-    const nome = document.querySelector('input').value;
-
-    console.log(nome, tipo)
-
-    // switch(radio) {
-    //   case 'gato': 
-    //     radio == '../assets/image/ionPet.png';
-    //     break;
-      
-    //   case 'cachorro':
-    //     radio == '../';
-    //     break;
-
-    //   case 'aves':
-    //     radio == '../';
-    //     break;
-
-    //   case 'outros':
-    //     radio == '../';
-    //     break;
-    // }
-
     this.modalController.dismiss({
       'dismissed': true,
-      tipo,
-      nome
+      name: this.petForm.get('name').value,
+      animal: this.petForm.get('animal').value,
     });
   }
 }

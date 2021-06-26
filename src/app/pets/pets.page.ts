@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { IonRouterOutlet } from '@ionic/angular';
+import { HttpService } from 'src/services/http';
 import { AddPetPage } from '../add-pet/add-pet.page';
 
 @Component({
@@ -10,32 +11,45 @@ import { AddPetPage } from '../add-pet/add-pet.page';
   styleUrls: ['./pets.page.scss'],
 })
 export class PetsPage {
+  public pets: any;
 
-  public pets: Array<Object> = [];
-  public images = {
-    'gato': '../../assets/image/gato.png',
-    'cachorro': '../../assets/image/cachorro.png',
-    'aves': '../../assets/image/ave.png',
-    'outros': '../../assets/image/outros.png',
-  };
+  constructor(
+    public navCtrl: NavController,
+    public alertController: AlertController,
+    public modalController: ModalController,
+    private routerOutlet: IonRouterOutlet,
+    private http: HttpService
+  ) {}
 
-  constructor(public alertController: AlertController, public modalController: ModalController, private routerOutlet: IonRouterOutlet) { }
+  ngOnInit() {
+    this.http.getPets().subscribe(response => {
+      this.pets = response;
+    })
+  }
 
-  async presentModal() {
+  async addPet() {
     const modal = await this.modalController.create({
       component: AddPetPage,
-      cssClass: 'my-custom-class',
       swipeToClose: true,
-      presentingElement: this.routerOutlet.nativeEl
+      presentingElement: this.routerOutlet.nativeEl,
     });
 
-    modal.onDidDismiss().then(data => {
-        this.pets.push({
-        nome: data.data.nome,
-        tipo: this.images[data.data.tipo]
-      })
-    })
+    await modal.present();
 
-    return await modal.present();
+    const data = await modal.onDidDismiss();
+    
+    return this.http.addPet(data.data).subscribe(response => {
+      this.pets.push(response);
+    });
+  }
+
+  carregarTela(tela, pet) {
+    this.navCtrl.navigateForward(tela, {
+      queryParams: {
+        id: pet.id,
+        name: pet.name,
+        photo_url: pet.photo_url
+      }
+    });
   }
 }

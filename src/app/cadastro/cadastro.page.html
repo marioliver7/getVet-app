@@ -5,27 +5,26 @@
       <img src="../../assets/image/logo_transparente2.png" alt="Logo">
     </div>
 
-    <form class="ion-text-center">
+    <form [formGroup]="registerForm" (ngSubmit)="register()" class="ion-text-center">
 
         <div class="section2">
-          <ion-input type="text" placeholder="Nome completo"><ion-icon name="person-outline"></ion-icon></ion-input>
+          <ion-input formControlName="name" type="text" placeholder="Nome completo"><ion-icon name="person-outline"></ion-icon></ion-input>
 
-          <ion-input type="email" placeholder="Email"><ion-icon name="mail-outline"></ion-icon></ion-input>
+          <ion-input formControlName="email" class="email" type="email" placeholder="Email"><ion-icon name="mail-outline"></ion-icon></ion-input>
     
-          <ion-input type="password" placeholder="Senha"><ion-icon name="lock-closed-outline"></ion-icon></ion-input>
+          <ion-input formControlName="password" class="senha" type="password" placeholder="Senha"><ion-icon name="lock-closed-outline"></ion-icon></ion-input>
 
-          <ion-input type="password" placeholder="Repetir senha"><ion-icon name="lock-closed-outline"></ion-icon></ion-input>
+          <ion-input formControlName="password_confirmation" type="password" placeholder="Repetir senha"><ion-icon name="lock-closed-outline"></ion-icon></ion-input>
 
         </div>
   
         <ion-row>
-  
           <ion-col>
-            <ion-button class="font-Bold" expand="round" fill="outline" color="favorite" (click)="alertInicial()">Cancelar</ion-button>
+            <ion-button class="font-Bold" expand="round" fill="outline" color="favorite" (click)="back()">Cancelar</ion-button>
           </ion-col>
-  
+
           <ion-col>
-            <ion-button class="font-Bold" expand="round" color="favorite" (click)="carregarTela('pet')"><span>...</span> Login <span>...</span></ion-button>
+            <ion-button type="submit" class="font-Bold" expand="round" color="favorite">Cadastrar</ion-button>
           </ion-col>
         </ion-row>    
 
@@ -33,5 +32,3 @@
   </div>
 
 </ion-content>
-
-<!-- Chave API AIzaSyA2Usc68MG_jUZz8Um-lxLdJFuby2J2IS8 -->

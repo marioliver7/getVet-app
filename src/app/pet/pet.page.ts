@@ -1,11 +1,13 @@
 import { Component, ElementRef, Inject, OnInit, Renderer2, ViewChild } from '@angular/core';
 
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { NavController, Platform } from '@ionic/angular';
+import { AlertController, NavController, Platform } from '@ionic/angular';
 
 import { environment } from 'src/environments/environment';
 import { DOCUMENT } from '@angular/common';
 import { MenuController } from '@ionic/angular';
+import { MyLocation } from '@ionic-native/google-maps';
+import { HttpService } from 'src/services/http';
 
 @Component({
   selector: 'app-pet',
@@ -13,35 +15,25 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./pet.page.scss'],
 })
 export class PetPage {
+  // public search: string = '';
+  // public searchResults = new Array<any>();
 
   constructor(
     private menu: MenuController,
     public navCtrl: NavController,
     private renderer: Renderer2,
     private element: ElementRef,
-    @Inject(DOCUMENT) private _document)  {}
+    @Inject(DOCUMENT) private _document,
+    private http: HttpService,
+    public alertCtrl: AlertController
+  )  {}
 
   carregarTela(tela) {
     this.navCtrl.navigateForward(tela);
   }
 
   map: any;
-  // markers = [];
   markers: any;
-
-  vet = [{
-    nome: 'Hospital Veterinário VetPenha',
-    lat: -23.525312379852544,
-    lng: -46.54935577808895,
-  }, {
-    nome: 'Hospital Veterinário Animal Prime',
-    lat: -23.522761666613448,
-    lng: -46.53630760374526,
-  }, {
-    nome: 'Clínica Veterinária Fênix',
-    lat: -23.521769124455723, 
-    lng: -46.54361493046856,
-  }]
 
   @ViewChild('map', {read: ElementRef, static: false}) mapRef: ElementRef;
 
@@ -68,36 +60,66 @@ export class PetPage {
     });
   }
 
-  async exibirMapa() {
-    await this.loadSDK();
-    
+  async createMap(latitude = -23.520570645840127, longitude = -46.549175275582044) {
     const options = {
-      center: new google.maps.LatLng(-23.520570645840127, -46.549175275582044),
+      center: new google.maps.LatLng(latitude, longitude),
       disableDefaultUI: true,
-      zoom: 14,
+      zoom: 15,
     };
 
     try {
       this.map = new google.maps.Map(this.mapRef.nativeElement, options);
     } catch (e) {}
 
-    for(let i = 0; i < this.vet.length; i++) {
-      new google.maps.Marker({
-        position: new google.maps.LatLng(this.vet[i].lat, this.vet[i].lng),
-        animation: google.maps.Animation.DROP,
-        map: this.map
-      });
+    this.http.places(latitude, longitude).subscribe(response => {
+      for(let i in response) {
+        const marker = new google.maps.Marker({
+          position: new google.maps.LatLng(response[i].latitude, response[i].longitude),
+          animation: google.maps.Animation.DROP,
+          map: this.map,
+          clickable: true,
+        });
+
+        marker['place_id'] = response[i].place_id;
+        marker['name'] = response[i].name;
+        marker['rating'] = response[i].rating;
+
+        marker.addListener('click', async e => {
+          const alert = await this.alertCtrl.create({
+            header: 'Adicionar Veterinário',
+            message: [
+              marker['name'],
+              `Nota: ${marker['rating'] || 'Sem Nota'}`
+            ].map(text => `<p>${text}<p>`).join(''),
+            buttons: [
+              {
+                text: 'OK',
+                handler: () => {
+                  this.http.addVet(marker['place_id']).subscribe(response => {
+                    alert.dismiss();
+                  });
+                }
+              },
+              {
+                text: 'Não'
+              }
+            ]
+          });
+  
+          return await alert.present();
+        });
+      }
+    });
+  }
+
+  async exibirMapa() {
+    await this.loadSDK();
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.createMap(position.coords.latitude, position.coords.longitude);
+      }, () => this.createMap());
     }
   }
 
 }
-
-// let content = `
-    // <div id="myId" class="item item-thumbnail-left item-text-wrap">
-    //   <ion-item>
-    //     <ion-row>
-    //       <h6> `+Marker+` </h6>
-    //     </ion-row>
-    //   </ion-item>
-    // </div>
-    // `

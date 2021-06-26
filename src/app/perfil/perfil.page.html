@@ -1,9 +1,27 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>perfil</ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar lines="none">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
+  <div id="centralizar">
+    <div class="section">
+      <img src="../../assets/image/logo_transparente2.png" alt="Logo">
+    </div>
+
+    <div class="section2" *ngIf="user">
+      <ion-input type="text">{{ user.name }}</ion-input>
+      <ion-input type="email">{{ user.email }}</ion-input>
+    </div>
+
+    <ion-row>
+      <ion-col>
+        <ion-button class="font-Bold" expand="round" color="favorite" (click)="back()">Concluído</ion-button>
+      </ion-col>
+    </ion-row>    
+  </div>
 
 </ion-content>

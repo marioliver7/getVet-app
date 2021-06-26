@@ -1,57 +1,63 @@
 <ion-content [fullscreen]="true">
-
   <div id="centralizar">
-
-    <form class="ion-text-center">
-
-        <div class="section2">
-          <div class="section">
-            <img src="../../assets/image/ionPet.png" alt="Logo">
-          </div>
-
-          <ion-input class='email' type="text" placeholder="Digite o nome do pet" class="nome"><ion-icon name="paw"></ion-icon></ion-input>
-    
-              <ion-radio-group value="pets">
-                <ion-list-header>
-                  <ion-label>Tipo de animal:</ion-label>
-                </ion-list-header>
-            
-                <ion-item lines="none" color="transparent">
-                  <ion-label>Cachorro</ion-label>
-                  <ion-radio slot="start" value="cachorro"></ion-radio>
-                </ion-item>
-            
-                <ion-item lines="none" color="transparent">
-                  <ion-label>Gato</ion-label>
-                  <ion-radio slot="start" value="gato"></ion-radio>
-                </ion-item>
-            
-                <ion-item lines="none" color="transparent">
-                  <ion-label>Aves</ion-label>
-                  <ion-radio slot="start" value="aves"></ion-radio>
-                </ion-item>
-
-                <ion-item lines="none" color="transparent">
-                  <ion-label>Outros</ion-label>
-                  <ion-radio slot="start" value="outros"></ion-radio>
-                </ion-item>
-              </ion-radio-group>
+    <form class="ion-text-center" [formGroup]="petForm">
+      <div class="section2">
+        <div class="section">
+          <img src="../../assets/image/ionPet.png" alt="Logo" />
         </div>
-  
-        <ion-row class="btn">
-  
-          <ion-col>
-            <ion-button class="font-Bold" expand="round" fill="outline" color="favorite" (click)="dismiss()">Enviar</ion-button>
-          </ion-col>
-  
-          <!-- <ion-col>
+
+        <ion-input
+          class="email"
+          type="text"
+          placeholder="Digite o nome do pet"
+          class="nome"
+          formControlName="name"
+          ><ion-icon name="paw"></ion-icon
+        ></ion-input>
+
+        <ion-radio-group formControlName="animal">
+          <ion-list-header>
+            <ion-label>Tipo de animal:</ion-label>
+          </ion-list-header>
+
+          <ion-item lines="none" color="transparent">
+            <ion-label>Cachorro</ion-label>
+            <ion-radio slot="start" value="cachorro"></ion-radio>
+          </ion-item>
+
+          <ion-item lines="none" color="transparent">
+            <ion-label>Gato</ion-label>
+            <ion-radio slot="start" value="gato"></ion-radio>
+          </ion-item>
+
+          <ion-item lines="none" color="transparent">
+            <ion-label>Aves</ion-label>
+            <ion-radio slot="start" value="aves"></ion-radio>
+          </ion-item>
+
+          <ion-item lines="none" color="transparent">
+            <ion-label>Outros</ion-label>
+            <ion-radio slot="start" value="outros"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </div>
+
+      <ion-row class="btn">
+        <ion-col>
+          <ion-button
+            class="font-Bold"
+            expand="round"
+            fill="outline"
+            color="favorite"
+            (click)="dismiss()"
+            >Enviar</ion-button
+          >
+        </ion-col>
+
+        <!-- <ion-col>
             <ion-button class="font-Bold" expand="round" color="favorite" (click)="carregarTela('pet')">Enviar</ion-button>
           </ion-col> -->
-        </ion-row>
-
-      
-
+      </ion-row>
     </form>
   </div>
-
 </ion-content>

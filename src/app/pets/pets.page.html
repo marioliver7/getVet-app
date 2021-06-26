@@ -1,13 +1,4 @@
-<!-- <ion-buttons slot="start">
-  <ion-back-button></ion-back-button>
-</ion-buttons> -->
-
-<!-- <ion-header>
-  <ion-avatar>
-    <ion-icon name=""></ion-icon>
-  </ion-avatar>
-</ion-header> -->
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
@@ -18,29 +9,20 @@
 
 <ion-content>
   
-  <ion-row *ngFor="let pet of pets">
+  <ion-row *ngFor="let pet of pets" button (click)="carregarTela('sos-page', pet)">
     <ion-col size="4">
-        <ion-avatar>
-          <img  src="{{ pet.tipo }}">
-        </ion-avatar>
+      <ion-avatar>
+        <img src="{{ pet.photo_url }}">
+      </ion-avatar>
     </ion-col>
 
     <ion-col size="6">
-      <p>{{ pet.nome }}</p>
+      <p>{{ pet.name }}</p>
     </ion-col>
   </ion-row>
-
-  <!-- <ion-item>
-    <div class="container">
-      <ion-avatar>
-        <ion-icon name="add-outline"></ion-icon>
-      </ion-avatar>
-      <p>Adicionar pet</p>
-    </div>
-  </ion-item> -->
  
-  <ion-fab slot="fixed" vertical="bottom" horizontal="end" (click)="presentModal()">
-    <ion-fab-button color="light"><ion-icon name="add-outline"></ion-icon></ion-fab-button>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end" (click)="addPet()">
+    <ion-fab-button color="favorite4"><ion-icon name="add-outline"></ion-icon></ion-fab-button>
   </ion-fab>
 
 </ion-content>
